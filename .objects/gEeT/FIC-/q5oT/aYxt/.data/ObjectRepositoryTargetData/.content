@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="fJbyiKJlLUSPmqE87WabdQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="app.the-qrcode-generator.com/qrcodes" CVScreenId="33407acf-2333-4838-8d20-c646b2d47a74" CvTextArea="1787, 725, 46, 15" CvTextArgument="Delete" CvType="Text" DesignTimeRectangle="1789, 721, 110, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Delete' tag='SPAN' /&gt;" Guid="ae7a3605-2245-4ea0-9ee8-1adbddb02f34" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="b718dbe92bf70053ce5007db3f90ca10.png" xmlns="">0yB4ePJZBcUyaNK5MdMEmlw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

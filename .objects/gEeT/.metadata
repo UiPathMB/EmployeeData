@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome The QR Code Generator (TQRCG) Create Free QR Codes",
+  "Type": "App",
+  "Id": "gEeTZqKeoEKSthcP5Dn7SQ",
+  "Reference": "u9uiA4YE9UmJl36Zja5k4g/gEeTZqKeoEKSthcP5Dn7SQ",
+  "Created": "2025-10-22T20:24:36.3917183Z",
+  "Updated": "2025-10-22T20:24:36.3917183Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

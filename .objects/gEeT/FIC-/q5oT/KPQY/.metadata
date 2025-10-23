@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Delete",
+  "Type": "Element",
+  "Id": "KPQYK6ijJ0yzTwxrBR6WOA",
+  "Reference": "u9uiA4YE9UmJl36Zja5k4g/KPQYK6ijJ0yzTwxrBR6WOA",
+  "ParentRef": "u9uiA4YE9UmJl36Zja5k4g/q5oT9todQECjkxgZFKoIEw",
+  "Created": "2025-10-23T12:15:56.1258685Z",
+  "Updated": "2025-10-23T12:15:56.1258685Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

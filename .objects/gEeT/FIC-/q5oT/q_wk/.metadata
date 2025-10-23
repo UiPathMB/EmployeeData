@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Delete(2)",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "q_wkNw84AEmY7gk-PuaYpw",
+  "Reference": "u9uiA4YE9UmJl36Zja5k4g/q_wkNw84AEmY7gk-PuaYpw",
+  "ParentRef": "u9uiA4YE9UmJl36Zja5k4g/q5oT9todQECjkxgZFKoIEw",
+  "Created": "2025-10-23T15:27:18.0742363Z",
+  "Updated": "2025-10-23T15:27:18.0742363Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

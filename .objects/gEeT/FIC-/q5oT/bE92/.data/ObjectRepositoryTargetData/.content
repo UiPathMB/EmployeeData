@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="jw1v964iRk6Iw80PVnd0FQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="app.the-qrcode-generator.com/qrcodes" CVScreenId="d47754f2-6f32-4caf-a28c-95211f0fcac1" CvElementArea="910, 688, 91, 41" CvTextArea="932, 699, 46, 16" CvTextArgument="Delete" CvType="Button" DesignTimeRectangle="912, 689, 87, 37" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Delete' tag='BUTTON' /&gt;" Guid="c4a60862-2de0-44e2-9d1c-b805d6c6b2bd" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="818, 607, 338, 56" ElementType="Text" FuzzySelectorArgument="&lt;webctrl type='' isleaf='1' tag='DIV' class='MuiAlert-message css-127h8j3' aaname='You can pause your QR Code to temporarily disable it, and reactivate it anytime.' matching:isleaf='fuzzy' fuzzylevel:isleaf='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='You can pause your QR Code to temporarily disable it, and reactivate it anytime.' /&gt;" Guid="4ff5945e-5cfb-4edf-b8f3-ec24cab7d091" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="c932bfb54a908f6d568a09a84e4abf65.png" xmlns="">0_mYiiRbrf0WqYKrVwcHbHA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

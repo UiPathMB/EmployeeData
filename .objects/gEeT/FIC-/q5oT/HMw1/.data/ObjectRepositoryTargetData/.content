@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="Phb7tu34_UWKs_YZkjYmvA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="app.the-qrcode-generator.com/qrcodes" CVScreenId="f9081d1f-15bb-44a1-b964-21c7b9b971cb" CvElementArea="1850, 615, 22, 28" CvType="Icon" DesignTimeRectangle="1848, 613, 26, 32" ElementType="Icon" ElementVisibilityArgument="Interactive" Guid="50e4b7e7-c778-4485-be6b-537d782d0314" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABoAAAAgCAYAAAAMq2gFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAD6SURBVEhL7dRZS8NQFATg86tDns2++a+E2DSpyy8QrHYxqW1dHsfmggVhXs4FLyIJfG8DA8O5kePnDi5MRdamImtTEdrFDEVZoKxK3Ny3NMOoi6IohO/7RpqlNMOoi5IkPhclaUIzjNV0eZGjuqx+dzpbf7fI+uoOHwM0wjD4cQwsw6iL4jg6F8WnC2QZRl00766R5ZmZbnE3pxlG9u89XJDXtxe4oC5q2tpMNz7a7rahGUZ2xy00guACnucZ4zGwDCPDYQON8by/i8LTD5ZlGOn3a2jUsyvzfsbpmq6mGUY2wzNckHX/BBdktX2EC7JcPcAFgaPvvxUBX4+lQJBZQ9iPAAAAAElFTkSuQmCC" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="318, 603, 118, 51" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Plain Text QR Code' parentid='root' tag='SPAN' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Plain Text QR Code' /&gt;" Guid="6a69223e-99a0-4c62-a46e-9505cdbdd378" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <TargetAnchorable.PointOffset>
+        <PointOffset X="3" Y="2" />
+      </TargetAnchorable.PointOffset>
+      <imageRef attrName="InformativeScreenshot" originalValue="6e63ef7be0f33ca83640b76374be0b4e.png" xmlns="">0VtdHkThbik2QGPqDsuwpAw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

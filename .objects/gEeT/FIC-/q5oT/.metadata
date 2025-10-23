@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome The QR Code Generator",
+  "Type": "Screen",
+  "Id": "q5oT9todQECjkxgZFKoIEw",
+  "Reference": "u9uiA4YE9UmJl36Zja5k4g/q5oT9todQECjkxgZFKoIEw",
+  "ParentRef": "u9uiA4YE9UmJl36Zja5k4g/FIC-sHU0Rk6rJ732mt6CTg",
+  "Created": "2025-10-23T12:14:38.6937915Z",
+  "Updated": "2025-10-23T12:14:38.6937915Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

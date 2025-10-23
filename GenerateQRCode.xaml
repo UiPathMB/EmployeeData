@@ -1,0 +1,815 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GenerateQRCode" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_EmployeeID" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmployeeName" Type="InArgument(x:String)" />
+    <x:Property Name="out_QRPath" Type="OutArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>GenerateQRCode_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GenerateQRCode" sap:VirtualizedContainerService.HintSize="619.9999999999999,5338" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="520.6666666666666,124" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="QRCodes" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520.6666666666666,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: The QR Code Generator (TQRCG): Create Free QR Codes" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V2">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,3320.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Plain Text''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_17" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" CVScreenId="b63c895c-9183-407b-b627-b8af771f7667" CvTextArea="641, 702, 84, 18" CvTextArgument="Plain Text" CvType="Text" DesignTimeRectangle="628, 641, 111, 100" DesignTimeScaleFactor="1.5" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='widget_input_tab_header' idx='4' parentid='campaign-list' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='widget_input_tab_header' type='' parentid='campaign-list' tag='DIV' aaname='                                                           Plain Text                         ' matching:class='fuzzy' fuzzylevel:class='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Plain Text' /&gt;" Guid="8ef8dad4-35a3-4e62-9333-bb52caa0864d" InformativeScreenshot="be669ef1dae9163714183f8ef56ab7c6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="Selector, CV" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into ''Add message''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="SameAsCard" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" CVScreenId="b63c895c-9183-407b-b627-b8af771f7667" CvTextArea="192, 935, 392, 24" CvTextArgument="Try something like https://example.com/" CvType="Text" DesignTimeRectangle="195, 914, 942, 187" DesignTimeScaleFactor="1.5" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TEXTAREA' type='' class='input textarea' placeholder='Enter text here' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="82b7de5b-a1b7-4cd2-a326-da95879e8a25" InformativeScreenshot="bce83c6ed9843ca4438839c564d63cfe.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CVScreenId="b63c895c-9183-407b-b627-b8af771f7667" CvElementArea="189, 855, 950, 59" CvType="InputBox" DesignTimeRectangle="195, 869, 942, 31" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Add message ' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Add message' /&gt;" Guid="4f35c6b1-ee35-406d-b9b8-4ad896fa0caa" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.VerifyOptions>
+                      <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionTypeIntoOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      </uix:VerifyExecutionTypeIntoOptions>
+                    </uix:NTypeInto.VerifyOptions>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Save''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_18" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" DesignTimeRectangle="1221, 555, 257, 72" DesignTimeScaleFactor="1.5" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='saveBtnExp' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='saveBtnExp' tag='BUTTON' type='' class='buttonStyleUDownload buttonStyle disabled w-75' aaname='                             Save                        ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save' /&gt;" Guid="5225399c-ce89-4b9a-9fd1-28b795fe7693" InformativeScreenshot="22ea90504bb50ec8b056a4d4fe5f91aa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Save''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_19" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes/new" CVScreenId="b63c895c-9183-407b-b627-b8af771f7667" CvTextArea="1638, 828, 37, 13" CvTextArgument="O.OE" CvType="Text" DesignTimeRectangle="1424, 804, 255, 43" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id=':rr:' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':rr:' tag='BUTTON' type='button' class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth css-a9ic6p' aaname='Save' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save' /&gt;" Guid="9ae594a2-9983-4e17-9775-e7e2b6557677" InformativeScreenshot="0baaa734bf052a166b2be74813c2dd61.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target DesignTimeRectangle="1534, 816, 34, 19" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Save' parentid=':rr:' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Save' parentid=':rr:' tag='SPAN' type='' class='MuiBox-root css-rrm59m' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Save' /&gt;" Guid="449c5597-10f7-4f7f-b834-04e847163fc0" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="334,197.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_20" InteractionMode="SameAsCard" KeyModifiers="None" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.MouseButton>
+                      <InArgument x:TypeArguments="uix:NMouseButton">
+                        <Literal x:TypeArguments="uix:NMouseButton" sap2010:WorkflowViewState.IdRef="Literal`1_1" />
+                      </InArgument>
+                    </uix:NClick.MouseButton>
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1119, 628, 20, 20" DesignTimeScaleFactor="1" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='Rename your QR Code' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Rename your QR Code' tag='svg' type='' class='MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-114eehj' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6a7d4c67-48d1-47d8-a22f-8a5e835efa2a" InformativeScreenshot="3edf53abf503e8c26ac1c759426185eb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into ''Plain Text QR Code''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="SameAsCard" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Text="[in_EmployeeName]" Version="V5">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="980, 628, 175, 20" DesignTimeScaleFactor="1" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='MuiInputBase-input MuiInput-input css-1juu494' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3721f2dd-babf-4e52-a357-7d0a470eded8" InformativeScreenshot="77b6fd4a75f87a9f6e2e14b0e309f679.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.VerifyOptions>
+                      <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionTypeIntoOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      </uix:VerifyExecutionTypeIntoOptions>
+                    </uix:NTypeInto.VerifyOptions>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_22" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1107, 733, 24, 24" DesignTimeScaleFactor="1" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1l3b12y' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="90d59b54-936b-4f92-90a6-90bfb018d479" InformativeScreenshot="a1668773f1a81f4922b7fddf750b0f68.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NGetText DisplayName="Get Text ''PNG''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,139.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="980, 773, 158, 36" DesignTimeScaleFactor="1" ElementType="ListItem" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='LI' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LI' type='' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters Mui-selected Mui-focusVisible MuiMenuItem-root MuiMenuItem-gutters Mui-selected css-v8z0p4' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="a53926a6-f055-4b5e-8cd9-040f4d339796" InformativeScreenshot="3988c65e69f85fec2fc8809618b18a06.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''DIV''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_23" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="11, 270, 1920, 749" DesignTimeScaleFactor="1" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='menu-' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='menu-' tag='DIV' type='' class='MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-1lbe2ow' aaname='' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="c621424f-d54d-4875-af8e-de71db3c21df" InformativeScreenshot="76333d9b30a58474652f1b33a1da6bae.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_24" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="980, 773, 256, 40" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Download' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Download' tag='BUTTON' type='button' class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-uxdw84' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Download' /&gt;" Guid="5f81e798-efa0-4921-a336-f1f95cdefd92" InformativeScreenshot="815b8b1ca21bb5bce8e9d09cef06619b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V6">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target DesignTimeRectangle="1084, 783, 71, 19" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Download' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Download' tag='SPAN' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Download' /&gt;" Guid="4a02cf39-0fca-4905-8503-832f94d3ff04" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_25" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1273, 377, 35, 35" DesignTimeScaleFactor="1" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-zrx4wm' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="c87bb096-c930-4ea8-bc12-50caf09549e9" InformativeScreenshot="5d5f7150532eae1f779c1a05c2bbd205.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_26" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1850, 617, 24, 24" DesignTimeScaleFactor="1" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='More actions' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='More actions' tag='svg' type='' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-q7mezt' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="76fef158-a54d-4eed-ba15-1200995e9795" InformativeScreenshot="5296106af5dde361874f4b3ababbb2f9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NGetText DisplayName="Get Text ''Delete''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,139.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1789, 799, 110, 24" DesignTimeScaleFactor="1" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Delete' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' type='' class='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-4kfa3t' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="59cfef01-a3b8-4277-8af0-b7a53268945a" InformativeScreenshot="ad87418ed10c520a3255b1d40d811de7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V6">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target DesignTimeRectangle="1758, 802, 14, 18" ElementType="Icon" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;div&amp;gt;svg&amp;gt;path' idx='5' tag='path' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='' tag='path' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="34788864-2e8e-4b37-8cd8-38f8e3437615" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <uix:NGetText DisplayName="Get Text ''Delete''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,139.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1789, 799, 110, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='SPAN' type='' class='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-4kfa3t' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="6bd99afb-476f-4cc2-8ec4-5b969d1eae45" InformativeScreenshot="4c5f5fbaf2506cb3bce26af9dcefd937.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target DesignTimeRectangle="1758, 802, 14, 18" ElementType="Icon" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;div&amp;gt;svg&amp;gt;path' idx='5' tag='path' /&gt;" Guid="f93bf1c2-9e88-4a41-8ce3-60cc7407fc1f" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Delete''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,222.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_27" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="470bf9c1-33c8-4124-bc93-c478a93ae334" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="912, 728, 87, 37" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Delete' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Delete' tag='BUTTON' type='button' class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textError MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorError MuiButton-root MuiButton-text MuiButton-textError MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorError css-1cpbtaf' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Delete' /&gt;" Guid="afc112dd-a66d-48d7-9f95-770485cd7bb1" InformativeScreenshot="9b9324f01f64c53f4938a4567d4034b6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-11, -11, 1942, 1030" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1719ff53218ec6e5554b27dca436abd6.jpg" Selector="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" Url="https://www.the-qrcode-generator.com/" Version="V2" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome The QR Code Generator (TQRCG) Create F" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="520.6666666666666,3298.6666666666665" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="Always" ScopeGuid="506822cd-1726-49c8-90bc-914fa2e65616" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486.6666666666667,3007.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Plain Text''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" CVScreenId="a0084593-de49-4ae3-840f-7f311bab66d2" CvTextArea="641, 702, 84, 18" CvTextArgument="Plain Text" CvType="Text" DesignTimeRectangle="628, 641, 111, 100" DesignTimeScaleFactor="1.5" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='widget_input_tab_header' idx='4' parentid='campaign-list' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='widget_input_tab_header' type='' parentid='campaign-list' tag='DIV' aaname='                                                           Plain Text                         ' matching:class='fuzzy' fuzzylevel:class='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Plain Text' /&gt;" Guid="742df35d-f072-4f0f-b680-5ab5eb66c3e4" InformativeScreenshot="be669ef1dae9163714183f8ef56ab7c6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="Selector, CV" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into ''Add message''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Text="[&quot;ID : &quot;+in_EmployeeID+&quot; -  Name : &quot;+in_EmployeeName]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" CVScreenId="a0084593-de49-4ae3-840f-7f311bab66d2" CvTextArea="192, 935, 392, 24" CvTextArgument="Try something like https://example.com/" CvType="Text" DesignTimeRectangle="195, 914, 942, 187" DesignTimeScaleFactor="1.5" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TEXTAREA' type='' class='input textarea' placeholder='Enter text here' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="bb2c43eb-0f7c-41c0-ac04-277da78e87d8" InformativeScreenshot="5b4a4468e6966a95619f90d3d0506e3b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="a0084593-de49-4ae3-840f-7f311bab66d2" CvElementArea="189, 855, 950, 60" CvType="InputBox" DesignTimeRectangle="195, 869, 942, 31" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Add message ' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Add message' /&gt;" Guid="2db20acc-2d01-4ce1-ab40-14b889e3cb09" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Save''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" DesignTimeRectangle="1221, 705, 257, 72" DesignTimeScaleFactor="1.5" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='saveBtnExp' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='saveBtnExp' tag='BUTTON' type='' class='buttonStyleUDownload buttonStyle disabled w-75' aaname='                             Save                        ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save' /&gt;" Guid="8f13c934-fd78-4965-b299-5f56aa441a52" InformativeScreenshot="22ea90504bb50ec8b056a4d4fe5f91aa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="452.6666666666667,392" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,280" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="True" DisplayName="Click ''Save''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,220" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes/new" CVScreenId="8a81be90-0809-478d-88c1-b7a67d4f4e75" ContentHash="IREeWJuF0E2deqg66IG7tA" CvElementArea="1696, 941, 88, 41" CvTextArea="1719, 953, 42, 15" CvTextArgument="Close" CvType="Button" DesignTimeRectangle="1699, 942, 83, 37" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id=':r1:' tag='BUTTON' /&gt;" Guid="ee50c3da-3e87-46f9-adb4-1418b2974c86" InformativeScreenshot="03b46fedcc373b86fc3127dc46b382ca.png" Reference="u9uiA4YE9UmJl36Zja5k4g/eqXGZM3yN0KKeh0ZZ2m6_g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Save''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes/new" CVScreenId="a0084593-de49-4ae3-840f-7f311bab66d2" CvTextArea="1637, 956, 40, 12" CvTextArgument="0l@" CvType="Text" DesignTimeRectangle="1406, 910, 306, 52" DesignTimeScaleFactor="1.2000000476837158" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id=':rs:' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':rs:' tag='BUTTON' type='button' class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth css-a9ic6p' aaname='Save' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save' /&gt;" Guid="4416c7f5-d06d-45d9-b064-1eb602a1894c" InformativeScreenshot="4998d52591641c01a378e577f606c290.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="1538, 925, 42, 23" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Save' parentid=':rs:' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Save' parentid=':rs:' tag='SPAN' type='' class='MuiBox-root css-rrm59m' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Save' /&gt;" Guid="f001b859-2a4f-4e5e-bc6a-e4667608a1e6" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1137, 754, 29, 29" DesignTimeScaleFactor="1.2000000476837158" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1l3b12y' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="0c85db43-2602-4764-b942-8b6ce273d717" InformativeScreenshot="fb1c1e5ab35bdaa3246817def085b56d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NGetText DisplayName="Get Text ''PNG''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,139.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="984, 802, 191, 43" DesignTimeScaleFactor="1.2000000476837158" ElementType="ListItem" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='LI' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LI' type='' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters Mui-selected MuiMenuItem-root MuiMenuItem-gutters Mui-selected css-v8z0p4' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="c81bb82a-9460-47a5-80bb-1bdf643945b3" InformativeScreenshot="1320e08373dcfbd893bc8f7bf3f347b0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''DIV''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="11, 270, 1920, 749" DesignTimeScaleFactor="1.2000000476837158" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='menu-' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='menu-' tag='DIV' type='' class='MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-1lbe2ow' aaname='' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="1b487a1e-3e94-4b3c-a329-fb98b597e458" InformativeScreenshot="30018b341206bcd9f6b24b8171bed4fb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''svg''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="1151, 628, 24, 24" DesignTimeScaleFactor="1.2000000476837158" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='Rename your QR Code' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Rename your QR Code' tag='svg' type='' class='MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-114eehj' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="56127769-cbc8-4a7d-9a91-dd44e413d9f7" InformativeScreenshot="2606ffc526025cac8255273e5a8f1c32.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into ''Plain Text QR Code''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Text="[in_EmployeeID+&quot;_&quot;+in_EmployeeName]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="983, 628, 217, 24" DesignTimeScaleFactor="1.2000000476837158" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='MuiInputBase-input MuiInput-input css-1juu494' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="a8d8b82b-8127-4d1b-b355-23e0b9f6c1f5" InformativeScreenshot="d6e76f954494d81bc4fe189ac5875590.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector" Version="V6">
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" DesignTimeRectangle="983, 802, 311, 48" DesignTimeScaleFactor="1.2000000476837158" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Download' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Download' tag='BUTTON' type='button' class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-uxdw84' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Download' /&gt;" Guid="e9e62127-5679-406e-8bd5-1b186c091b9f" InformativeScreenshot="a2acbf96095a37674be7b7bf21eba94a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V6">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="1110, 815, 86, 23" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Download' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Download' tag='SPAN' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Download' /&gt;" Guid="cba1843e-f1d6-4861-876a-9e8069b5ebe3" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                  <uix:TargetAnchorable.PointOffset>
+                    <uix:PointOffset />
+                  </uix:TargetAnchorable.PointOffset>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452.6666666666667,222.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="506822cd-1726-49c8-90bc-914fa2e65616" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="the-qrcode-generator.com" CVScreenId="f4a02c91-01a4-42fc-be80-f4f4f864411e" ContentHash="GBBsBH9h4USTsYchshJljw" CvElementArea="1275, 431, 30, 27" CvType="CloseButton" DesignTimeRectangle="1273, 427, 35, 35" ElementType="Icon" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-zrx4wm' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="dbf68c20-833f-4a0c-8a25-fbf2e70e26c6" InformativeScreenshot="801957149390957c333adf76fb292bb8.png" Reference="u9uiA4YE9UmJl36Zja5k4g/ZEQZ2NriREeiVyRd4lf0Ng" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1030" BrowserType="Chrome" ContentHash="FAAMURLb4ke8bip6iP5CEw" IconBase64="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" InformativeScreenshot="1719ff53218ec6e5554b27dca436abd6.jpg" Reference="u9uiA4YE9UmJl36Zja5k4g/Irq87d-eo0ef_o_dakaMcw" Selector="&lt;html app='chrome.exe' title='The QR Code Generator (TQRCG): Create Free QR Codes' /&gt;" Url="https://www.the-qrcode-generator.com/" Version="V2" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520.6666666666666,339.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[in_Config(&quot;DownloadPath&quot;).ToString() + in_EmployeeID + &quot;_&quot; + in_EmployeeName + &quot;.png&quot;]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome The QR Code Generator" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="520.6666666666666,907.3333333333334" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="bd87bfa5-6805-4f49-a8f7-9f78b48e40bf" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,616" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Plain Text QR Code'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,191.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_30" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bd87bfa5-6805-4f49-a8f7-9f78b48e40bf" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" ContentHash="K0mUnWQzzEOSf5YhOd4IfQ" DesignTimeRectangle="1850, 617, 24, 24" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='More actions' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='More actions' type='' tag='svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-q7mezt' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='in_EmployeeID+&amp;quot;_&amp;quot;+in_EmployeeName' /&gt;" Guid="2bf656ba-bcae-47a6-b057-fc5a7b60b11e" InformativeScreenshot="b3b4e2636ace16229d6f93d7059fb8af.png" Reference="u9uiA4YE9UmJl36Zja5k4g/9ZuwaUrfZEOJMR9-lg4Plg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="318, 603, 118, 51" ElementType="Text" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl aaname='Plain Text QR Code' parentid='root' tag='SPAN' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='{0}+&amp;quot;_&amp;quot;+{1}' /&gt;&quot;, in_EmployeeID, in_EmployeeName)]" Guid="3c119ce5-6d4a-4f18-b514-9337c402ce89" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Delete(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_28" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bd87bfa5-6805-4f49-a8f7-9f78b48e40bf" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="app.the-qrcode-generator.com/qrcodes" CVScreenId="5dcb0686-2dad-4838-97bb-02331888ee3e" ContentHash="VteCLL28SEu1VXQkhBb-Tw" CvTextArea="1787, 803, 46, 15" CvTextArgument="Delete" CvType="Text" DesignTimeRectangle="1789, 799, 110, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Delete' tag='SPAN' /&gt;" Guid="835c9818-c9ce-4592-b1d3-0f6ec4ebb63f" InformativeScreenshot="43a79b10443aea70095ba7e9146232b6.png" Reference="u9uiA4YE9UmJl36Zja5k4g/q_wkNw84AEmY7gk-PuaYpw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="382,132.66666666666666" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="62beb45f-1675-4be1-8095-7bb0042ae1e0" InformativeScreenshot="c252668d01c31c7095fc908eacf7f6f4" Selector="&lt;webctrl omit:id=':r56:' tag='BUTTON' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1030" BrowserType="Chrome" ContentHash="KBFbAUKm30qMyDguFcIpxg" IconBase64="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" InformativeScreenshot="698053330abdd5eaf7e0a0aefbb1c618.jpg" Reference="u9uiA4YE9UmJl36Zja5k4g/q5oT9todQECjkxgZFKoIEw" Selector="&lt;html app='chrome.exe' title='The QR Code Generator' /&gt;" Url="https://app.the-qrcode-generator.com/qrcodes" Version="V2" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="520.6666666666666,480.6666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="1">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,247.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="QRCodes" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="382,187.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_Config(&quot;DownloadPath&quot;).ToString() + in_EmployeeID + &quot;_&quot; + in_EmployeeName + &quot;.png&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <Assign sap:VirtualizedContainerService.HintSize="520.6666666666666,108" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_QRPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["QRCodes\"+ in_EmployeeID + "_" + in_EmployeeName + ".png"]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>

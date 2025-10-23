@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Plain Text QR Code",
+  "Type": "Element",
+  "TaxonomyType": "Icon",
+  "Id": "HMw1mvsOA0yoyghdVy6AvA",
+  "Reference": "u9uiA4YE9UmJl36Zja5k4g/HMw1mvsOA0yoyghdVy6AvA",
+  "ParentRef": "u9uiA4YE9UmJl36Zja5k4g/q5oT9todQECjkxgZFKoIEw",
+  "Created": "2025-10-23T15:36:49.5926338Z",
+  "Updated": "2025-10-23T15:36:49.5926338Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
