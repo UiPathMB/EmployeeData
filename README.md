@@ -1,7 +1,11 @@
 ### Documentation is included in the Documentation folder ###
 ## lambda handler ##
 upload index.js, packge.json to the lambda console and update env files in the console. required variables are 
-1. 
+1. UIPATH_ORCH_URL
+2. UIPATH_ACCOUNT_LOGICAL_NAME
+3. UIPATH_TENANT_NAME
+4. UIPATH_CLIENT_ID
+5. UIPATH_USER_KEY
 
 ### REFrameWork Template ###
 **Robotic Enterprise Framework**
@@ -39,4 +43,5 @@ upload index.js, packge.json to the lambda console and update env files in the c
 2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
 3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
 4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+
 
